@@ -13,8 +13,8 @@ export function Channel13Word() {
           <div className="absolute inset-0 rounded-[28px] bg-gradient-to-br from-zinc-700 via-zinc-900 to-black p-2.5 shadow-2xl md:rounded-[36px] md:p-3">
             <div className="relative h-full w-full overflow-hidden rounded-[20px] bg-ink-900 md:rounded-[24px]">
               <Image
-                src="/logo.png"
-                alt="Purple Unc, broadcasting"
+                src="/memes/hero.png"
+                alt="Purple Unc, broadcasting from the basement studio"
                 fill
                 priority
                 sizes="(min-width: 768px) 448px, 90vw"

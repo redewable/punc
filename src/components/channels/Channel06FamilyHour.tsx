@@ -2,6 +2,7 @@
 
 import { config, isMintLive } from "@/lib/config";
 import { useEffect, useState } from "react";
+import { ChannelHero } from "../tv/ChannelHero";
 
 interface HolderRow {
   owner: string;
@@ -71,6 +72,11 @@ export function Channel06FamilyHour() {
 
   return (
     <section className="tune-in mx-auto max-w-7xl px-4 pt-20 pb-32 sm:px-6 sm:pt-24 md:pb-40">
+      <ChannelHero
+        src="/memes/ch06.png"
+        alt="The family on a beige couch — Unc front and center"
+        caption="FAMILY HOUR · BEIGE COUCH · NOBODY GETS A HUG"
+      />
       <div className="mb-6">
         <div className="font-display text-unc-200 text-xs tracking-[0.4em] mb-1">
           REALITY · UNSCRIPTED · UNCOMFORTABLE

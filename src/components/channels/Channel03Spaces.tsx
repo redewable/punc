@@ -9,6 +9,7 @@
  * adding entries to MESSAGES below.
  */
 
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 type Sender =
@@ -173,8 +174,14 @@ export function Channel03Spaces() {
         {/* Chat header — Apple-ish but uncle-themed */}
         <div className="mb-2 flex items-center justify-between gap-3 rounded-t-xl border-b border-unc-700/50 px-3 py-2 font-display">
           <div className="flex items-center gap-2 min-w-0">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-unc-500 text-white text-xs">
-              👨‍🦳
+            <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full border border-unc-300/60 bg-unc-500">
+              <Image
+                src="/punc-pfp.png"
+                alt="The Unc"
+                fill
+                sizes="36px"
+                className="object-cover"
+              />
             </div>
             <div className="min-w-0">
               <div className="text-unc-50 text-sm crt-text truncate">

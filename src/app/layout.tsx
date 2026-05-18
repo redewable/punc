@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   description:
     "$PUNC (Purple Unc) — a Solana memecoin broadcast live from your degenerate uncle's basement. Channel up. Cope down.",
   metadataBase: new URL("https://punc.live"),
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
   openGraph: {
     title: "$PUNC — The Purple Channel",
     description: "Tune in. Cope out. Live on Solana.",

@@ -9,6 +9,7 @@ import {
   type ChartInterval,
 } from "@/lib/config";
 import { BuyButton } from "../shared/BuyButton";
+import { ChannelHero } from "../tv/ChannelHero";
 
 const INTERVALS: { id: ChartInterval; label: string }[] = [
   { id: "1", label: "1m" },
@@ -22,6 +23,11 @@ export function Channel02News() {
 
   return (
     <section className="tune-in mx-auto max-w-7xl px-4 pt-20 pb-32 sm:px-6 sm:pt-24 md:pb-40">
+      <ChannelHero
+        src="/memes/ch02.png"
+        alt="The Unc anchoring the news from a folding card table"
+        caption="LIVE FROM STUDIO B · ANCHOR DESK · COPE INDEX RISING"
+      />
       <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <div className="font-display text-unc-200 text-[10px] sm:text-xs tracking-[0.35em] sm:tracking-[0.4em] mb-1">

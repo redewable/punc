@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ContractCopy } from "../shared/ContractCopy";
 
@@ -24,9 +25,18 @@ export function Channel99Static() {
   return (
     <section className="tune-in mx-auto max-w-3xl px-4 pt-20 pb-32 sm:px-6 sm:pt-28 md:pb-40 text-center">
       <div className="relative mx-auto h-72 w-full overflow-hidden rounded-2xl border border-unc-700/60 bg-black">
-        <div className="tv-static absolute inset-0 opacity-70" />
+        {/* Antenna silhouette art, behind the snow */}
+        <Image
+          src="/memes/ch99.png"
+          alt="Lone antenna silhouette in a sea of static"
+          fill
+          sizes="(min-width: 768px) 768px, 100vw"
+          className="object-cover opacity-60"
+          priority
+        />
+        <div className="tv-static absolute inset-0 opacity-55 mix-blend-screen" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="font-display flicker">
+          <div className="font-display flicker text-center">
             <div className="text-unc-100 text-xs tracking-[0.5em]">
               DO NOT ADJUST YOUR SET
             </div>
