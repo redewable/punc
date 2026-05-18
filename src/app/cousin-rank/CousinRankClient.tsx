@@ -108,7 +108,7 @@ function CousinRankInner() {
           AN OFFICIAL OFFER FROM THE FAMILY
         </div>
         <h1 className="font-display text-4xl md:text-5xl text-unc-50 crt-text">
-          CLAIM YOUR COUSIN RANK
+          CLAIM YOUR CUZ RANK
         </h1>
         <p className="mt-3 text-unc-100/85">
           Connect the wallet that holds your $PUNC. If you&apos;re in the top{" "}
@@ -248,7 +248,7 @@ function CousinRankInner() {
           ))}
           <li className="flex items-baseline gap-2 text-unc-300/80">
             <span className="w-8">…</span>
-            <span>then COUSIN #N down the line</span>
+            <span>then CUZ #N down the line</span>
           </li>
         </ol>
       </div>

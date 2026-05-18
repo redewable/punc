@@ -60,7 +60,7 @@ export function PriceTicker() {
       : "text-unc-200";
 
   return (
-    <div className="pointer-events-none fixed right-4 top-4 z-40 font-display">
+    <div className="pointer-events-none fixed right-4 top-4 z-40 font-display hidden md:block">
       <div className="rounded-sm border border-unc-300/50 bg-black/70 px-3 py-1.5 backdrop-blur">
         <div className="flex items-center gap-2 text-sm tracking-[0.2em]">
           <span className="text-unc-100">${config.token.symbol}</span>

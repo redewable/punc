@@ -13,17 +13,17 @@ const PROMOS = [
   },
   {
     code: "S01E03",
-    title: "COUSIN RANK SYSTEM",
+    title: "CUZ RANK SYSTEM",
     blurb:
       "On-chain title for every wallet that holds. From Plus-One to Patriarch. NFT-optional. Hat-optional. Roast-mandatory.",
     eta: "after launch · before kingdom come",
   },
   {
     code: "S01E04",
-    title: "THE LATE-NIGHT SHOW",
+    title: "MORE FROM THE GROUP CHAT",
     blurb:
-      "Weekly X Space hosted by your uncle. Topics include: the chart, his ex, and what he heard at the gas station.",
-    eta: "weekly · once it's weekly",
+      "Channel 03 keeps getting longer. New cuz, new typos, new screenshots Unc forwarded from someone he met at the gas station. Pull-to-refresh forever.",
+    eta: "whenever the Unc is up late",
   },
   {
     code: "S01E05",
@@ -36,7 +36,7 @@ const PROMOS = [
 
 export function Channel11Upcoming() {
   return (
-    <section className="tune-in mx-auto max-w-7xl px-6 pt-24 pb-40">
+    <section className="tune-in mx-auto max-w-7xl px-4 pt-20 pb-32 sm:px-6 sm:pt-24 md:pb-40">
       <div className="mb-6">
         <div className="font-display text-unc-200 text-xs tracking-[0.4em] mb-1">
           PROMO BLOCK · TUNE IN OR DON&apos;T

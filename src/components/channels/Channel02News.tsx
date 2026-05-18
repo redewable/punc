@@ -21,21 +21,23 @@ export function Channel02News() {
   const [interval, setInterval] = useState<ChartInterval>("60");
 
   return (
-    <section className="tune-in mx-auto max-w-7xl px-6 pt-24 pb-40">
-      <div className="mb-4 flex items-end justify-between">
+    <section className="tune-in mx-auto max-w-7xl px-4 pt-20 pb-32 sm:px-6 sm:pt-24 md:pb-40">
+      <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
-          <div className="font-display text-unc-200 text-xs tracking-[0.4em] mb-1">
+          <div className="font-display text-unc-200 text-[10px] sm:text-xs tracking-[0.35em] sm:tracking-[0.4em] mb-1">
             BREAKING · LIVE · NOBODY ASKED
           </div>
-          <h2 className="font-display text-4xl md:text-5xl text-unc-50 crt-text">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-unc-50 crt-text">
             THE NEWS AT 11
           </h2>
-          <p className="mt-2 max-w-2xl text-unc-100/80">
+          <p className="mt-2 max-w-2xl text-unc-100/80 text-sm sm:text-base">
             We&apos;re live from the studio. Conditions: purple. Forecast: send.
             Anchor desk: a folding card table. Sponsored by absolutely no one.
           </p>
         </div>
-        <BuyButton />
+        <div className="md:shrink-0">
+          <BuyButton />
+        </div>
       </div>
 
       {/* The "screen within the screen" */}

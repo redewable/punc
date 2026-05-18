@@ -23,6 +23,9 @@ export function StationID() {
         <div className="text-unc-200 text-sm tracking-[0.4em] mt-3">
           THE PURPLE CHANNEL · CH 13
         </div>
+        <div className="text-unc-300 text-[10px] tracking-[0.5em] mt-6">
+          DON&apos;T BE A $PUNC
+        </div>
       </div>
       <div className="tv-static absolute inset-0 opacity-25" />
     </div>

@@ -71,7 +71,7 @@ export async function GET(
               marginBottom: "20px",
             }}
           >
-            COUSIN RANK
+            CUZ RANK
           </div>
           <div
             style={{

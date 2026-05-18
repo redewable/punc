@@ -6,10 +6,10 @@
 export const COUSIN_ROLES = [
   "THE PATRIARCH",
   "AUNTIE",
-  "COUSIN-IN-LAW",
-  "FIRST COUSIN",
-  "SECOND COUSIN",
-  "DISTANT COUSIN",
+  "CUZ-IN-LAW",
+  "FIRST CUZ",
+  "SECOND CUZ",
+  "DISTANT CUZ",
   "PLUS-ONE",
   "RANDOM GUY EATING ALL THE CHIPS",
   "PHOTOGRAPHER",
@@ -22,7 +22,7 @@ export const roleForRank = (rank: number): string => {
   // rank is 1-indexed.
   const idx = Math.max(0, rank - 1);
   if (idx < COUSIN_ROLES.length) return COUSIN_ROLES[idx];
-  return `COUSIN #${idx + 1}`;
+  return `CUZ #${idx + 1}`;
 };
 
 /** How many top-N holders are eligible to mint a cousin-rank NFT. */

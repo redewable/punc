@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import {
   CHANNELS,
@@ -11,13 +11,17 @@ import {
   type ChannelId,
 } from "@/lib/channels";
 
+import { ChannelFlash } from "./tv/ChannelFlash";
 import { ChannelIndicator } from "./tv/ChannelIndicator";
 import { CommercialBreak } from "./tv/CommercialBreak";
 import { LowerThird } from "./tv/LowerThird";
+import { MobileTopBar } from "./tv/MobileTopBar";
+import { MuteToggle } from "./tv/MuteToggle";
 import { PriceTicker } from "./tv/PriceTicker";
 import { RemoteControl } from "./tv/RemoteControl";
 import { StaticTransition } from "./tv/StaticTransition";
 import { StationID } from "./tv/StationID";
+import { playClick, playStatic } from "@/lib/sfx";
 
 // Default channel ships in the initial bundle. The rest lazy-load on first
 // tune-in — every channel is keyboard-reachable so users only pay for what
@@ -62,6 +66,11 @@ const Channel99Static = lazyChannel(() =>
   import("./channels/Channel99Static").then((m) => ({ default: m.Channel99Static }))
 );
 
+// Swipe threshold (px) for the channel-up / channel-down gesture.
+// Tuned so a casual horizontal flick fires, a vertical scroll doesn't.
+const SWIPE_MIN_X = 50;
+const SWIPE_MAX_Y = 60;
+
 export function ChannelController() {
   const [active, setActive] = useState<ChannelId>(DEFAULT_CHANNEL);
   const [signal, setSignal] = useState(0);
@@ -92,6 +101,8 @@ export function ChannelController() {
     setActive(id);
     if (typeof window !== "undefined") {
       window.history.replaceState(null, "", `#${id}`);
+      playClick();
+      playStatic();
     }
   }, []);
 
@@ -111,6 +122,25 @@ export function ChannelController() {
     return () => window.removeEventListener("keydown", handler);
   }, [active, change]);
 
+  // Swipe (mobile) — left = next channel, right = prev. Stored in a ref so
+  // the listener doesn't re-attach on every render.
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const start = touchStart.current;
+    touchStart.current = null;
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    if (Math.abs(dx) < SWIPE_MIN_X) return;
+    if (Math.abs(dy) > SWIPE_MAX_Y) return; // vertical scroll, not a swipe
+    change(dx < 0 ? nextChannel(active) : prevChannel(active));
+  };
+
   const channel = getChannel(active);
 
   return (
@@ -120,10 +150,16 @@ export function ChannelController() {
       {/* Scan band drifting down the page */}
       <div className="scan-band" />
 
+      <MobileTopBar />
       <ChannelIndicator channel={channel} />
       <PriceTicker />
 
-      <div key={active} className="relative">
+      <div
+        key={active}
+        className="relative"
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         {active === "ch13" && <Channel13Word />}
         {active === "ch02" && <Channel02News />}
         {active === "ch03" && <Channel03Spaces />}
@@ -136,6 +172,8 @@ export function ChannelController() {
 
       <LowerThird channel={channel} />
       <RemoteControl active={active} onChange={change} />
+      <MuteToggle />
+      <ChannelFlash channel={channel} signal={signal} />
       <StaticTransition signal={String(signal)} />
       <CommercialBreak signal={signal} />
     </main>

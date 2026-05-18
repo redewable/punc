@@ -8,9 +8,13 @@
 
 # next.js
 /.next/
+**/.next/
 /out/
 next-env.d.ts
 tsconfig.tsbuildinfo
+
+# claude local tooling
+.claude/
 
 # production
 /build

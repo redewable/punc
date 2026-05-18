@@ -35,17 +35,17 @@ const shorten = (s: string) => `${s.slice(0, 4)}…${s.slice(-4)}`;
 const ROLES = [
   "THE PATRIARCH",
   "AUNTIE",
-  "COUSIN-IN-LAW",
-  "FIRST COUSIN",
-  "SECOND COUSIN",
-  "DISTANT COUSIN",
+  "CUZ-IN-LAW",
+  "FIRST CUZ",
+  "SECOND CUZ",
+  "DISTANT CUZ",
   "PLUS-ONE",
   "RANDOM GUY EATING ALL THE CHIPS",
   "PHOTOGRAPHER",
   "THE QUIET ONE",
 ];
 const roleFor = (idx: number) =>
-  idx < ROLES.length ? ROLES[idx] : `COUSIN #${idx + 1}`;
+  idx < ROLES.length ? ROLES[idx] : `CUZ #${idx + 1}`;
 
 export function Channel06FamilyHour() {
   const [data, setData] = useState<ApiResp | null>(null);
@@ -70,7 +70,7 @@ export function Channel06FamilyHour() {
   }, []);
 
   return (
-    <section className="tune-in mx-auto max-w-7xl px-6 pt-24 pb-40">
+    <section className="tune-in mx-auto max-w-7xl px-4 pt-20 pb-32 sm:px-6 sm:pt-24 md:pb-40">
       <div className="mb-6">
         <div className="font-display text-unc-200 text-xs tracking-[0.4em] mb-1">
           REALITY · UNSCRIPTED · UNCOMFORTABLE
@@ -85,7 +85,7 @@ export function Channel06FamilyHour() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
-        <Stat label="THE COUSINS" value={live && data ? data.total.toLocaleString() : "—"} sub="holders accounted for" />
+        <Stat label="THE CUZ" value={live && data ? data.total.toLocaleString() : "—"} sub="holders accounted for" />
         <Stat
           label="ON THE PLATE"
           value={

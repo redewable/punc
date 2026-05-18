@@ -40,10 +40,10 @@ export const CHANNELS: Channel[] = [
   {
     id: "ch03",
     number: "03",
-    callSign: "LATE NIGHT WITH THE UNC",
-    category: "TALK SHOW",
-    tagline: "Recaps from the X Space couch. Off-mic comments still on mic.",
-    bumper: "LATE NIGHT · NO COMMERCIAL BREAKS · NO BAND",
+    callSign: "THE FAMILY GROUP CHAT",
+    category: "MESSAGES",
+    tagline: "What your uncle is sending to the chat at 2 AM.",
+    bumper: "47 UNREAD · DO NOT OPEN · UNCLE IS TYPING",
   },
   {
     id: "ch04",

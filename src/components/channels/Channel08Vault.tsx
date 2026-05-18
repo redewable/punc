@@ -25,7 +25,7 @@ export function Channel08Vault() {
   }, []);
 
   return (
-    <section className="tune-in mx-auto max-w-7xl px-6 pt-24 pb-40">
+    <section className="tune-in mx-auto max-w-7xl px-4 pt-20 pb-32 sm:px-6 sm:pt-24 md:pb-40">
       <div className="mb-6">
         <div className="font-display text-unc-200 text-xs tracking-[0.4em] mb-1">
           ARCHIVE · RECOVERED FROM A DESKTOP FOLDER NAMED "stuff"

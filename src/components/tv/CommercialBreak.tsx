@@ -16,6 +16,8 @@ const BUMPERS = [
   "STAY TUNED",
   "DO NOT TOUCH THAT DIAL",
   "MORE PURPLE UNC AFTER THIS",
+  "DON'T BE A $PUNC",
+  "DON'T BE A $PUNC ABOUT IT",
 ];
 
 export function CommercialBreak({ signal, every = 4, chance = 0.7 }: Props) {

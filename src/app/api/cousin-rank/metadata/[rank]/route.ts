@@ -18,7 +18,7 @@ export async function GET(
 
   return NextResponse.json(
     {
-      name: `Cousin Rank #${rank.toString().padStart(2, "0")} — ${role}`,
+      name: `Cuz Rank #${rank.toString().padStart(2, "0")} — ${role}`,
       symbol: "PUNCRANK",
       description:
         "On-chain seat at the $PUNC family table. Earned by holding $PUNC. Burned by leaving.",

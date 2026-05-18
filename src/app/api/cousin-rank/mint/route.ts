@@ -162,7 +162,7 @@ export async function POST(req: Request) {
   try {
     await createNft(umi, {
       mint,
-      name: `Cousin Rank #${rank.toString().padStart(2, "0")}`,
+      name: `Cuz Rank #${rank.toString().padStart(2, "0")}`,
       symbol: "PUNCRANK",
       uri,
       sellerFeeBasisPoints: percentAmount(0),
