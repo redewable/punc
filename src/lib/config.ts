@@ -10,7 +10,7 @@ export const config = {
     // when set (useful for previews against a test mint).
     mint:
       process.env.NEXT_PUBLIC_MINT_ADDRESS ??
-      "BCKJnDzpqT7YwTFDqJypxuCksgB1dTGvq12iyTNBpump",
+      "5AxHzjN16umYxDfMn7zWG6Agdg8mSQUQ3d4qV8bvpump",
   },
   socials: {
     twitter: process.env.NEXT_PUBLIC_TWITTER_URL ?? "",
