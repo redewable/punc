@@ -15,6 +15,12 @@ export const config = {
   rpc: {
     solana: process.env.NEXT_PUBLIC_SOLANA_RPC ?? "https://api.mainnet-beta.solana.com",
   },
+  features: {
+    // Hides the /cousin-rank wallet + mint flow until the operator funds the
+    // mint authority. Flip NEXT_PUBLIC_CUZ_RANK_ENABLED=true in Vercel after
+    // setting COUSIN_RANK_MINT_AUTHORITY_SECRET to turn the page live.
+    cuzRank: process.env.NEXT_PUBLIC_CUZ_RANK_ENABLED === "true",
+  },
 } as const;
 
 export const isMintLive = () =>

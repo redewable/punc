@@ -35,6 +35,10 @@ interface MintResp {
 }
 
 export function CousinRankClient() {
+  // Pre-launch: show a coming-soon card and skip mounting the wallet
+  // adapter at all. Flip NEXT_PUBLIC_CUZ_RANK_ENABLED=true to go live.
+  if (!config.features.cuzRank) return <CousinRankComingSoon />;
+
   const endpoint = config.rpc.solana;
   const wallets = useMemo(
     () => [new PhantomWalletAdapter(), new SolflareWalletAdapter()],
@@ -49,6 +53,80 @@ export function CousinRankClient() {
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
+  );
+}
+
+function CousinRankComingSoon() {
+  return (
+    <section className="mx-auto max-w-3xl px-6 pt-24 pb-28">
+      <div className="mb-6">
+        <div className="font-display text-unc-200 text-xs tracking-[0.4em] mb-1">
+          AN OFFICIAL OFFER FROM THE FAMILY
+        </div>
+        <h1 className="font-display text-4xl md:text-5xl text-unc-50 crt-text">
+          CLAIM YOUR CUZ RANK
+        </h1>
+        <p className="mt-3 text-unc-100/85">
+          One-of-one on-chain NFTs for the top {COUSIN_RANK_ELIGIBLE_TOP_N} $PUNC
+          holders. Stamped with your rank, your role, and the Unc&apos;s blessing
+          (such as it is). Free to claim, no fee, one per wallet.
+        </p>
+      </div>
+
+      <div className="rounded-2xl border-2 border-unc-300/50 bg-unc-950/40 p-8 text-center shadow-[0_0_40px_rgba(124,58,237,0.35)]">
+        <div className="font-display text-unc-300 text-xs tracking-[0.4em] mb-2">
+          STAY TUNED · CLAIMS NOT YET LIVE
+        </div>
+        <div className="font-display text-unc-50 text-3xl md:text-4xl crt-text">
+          MINTING COMING SOON
+        </div>
+        <p className="mx-auto mt-4 max-w-md text-unc-100/85">
+          We&apos;re lining up the mint authority. Hold $PUNC, climb the
+          leaderboard, and you&apos;ll be ready when the Unc says &quot;come and
+          get it.&quot;
+        </p>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 font-display">
+          <a
+            href="/#ch06"
+            className="rounded border border-unc-300 bg-unc-500 px-5 py-2 text-sm tracking-[0.25em] text-white btn-glow"
+          >
+            ▶ CHECK YOUR PLACE AT THE TABLE
+          </a>
+          <a
+            href="/#ch13"
+            className="rounded border border-unc-300/40 bg-black/40 px-5 py-2 text-sm tracking-[0.25em] text-unc-200 hover:border-unc-300 hover:text-unc-50"
+          >
+            ← BACK TO CHANNEL 13
+          </a>
+        </div>
+      </div>
+
+      <div className="mt-10 rounded-xl border border-unc-700/50 bg-black/30 p-5 font-display">
+        <div className="text-unc-300 text-[10px] tracking-[0.4em] mb-3">
+          THE ROLE LADDER · PREVIEW
+        </div>
+        <ol className="grid grid-cols-2 gap-x-6 gap-y-1 text-unc-100 text-sm md:grid-cols-3">
+          {COUSIN_ROLES.map((r, i) => (
+            <li key={r} className="flex items-baseline gap-2">
+              <span className="text-unc-300 w-8 tabular-nums">
+                #{(i + 1).toString().padStart(2, "0")}
+              </span>
+              <span>{r}</span>
+            </li>
+          ))}
+          <li className="flex items-baseline gap-2 text-unc-300/80">
+            <span className="w-8">…</span>
+            <span>then CUZ #N down the line</span>
+          </li>
+        </ol>
+      </div>
+
+      <p className="mt-6 text-center font-mono text-[10px] text-unc-300/70">
+        One per wallet, top {COUSIN_RANK_ELIGIBLE_TOP_N} only. Not financial
+        advice. Probably not financial. Possibly not advice. Definitely not
+        yours.
+      </p>
+    </section>
   );
 }
 
