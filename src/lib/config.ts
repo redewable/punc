@@ -5,7 +5,12 @@ export const config = {
   token: {
     symbol: process.env.NEXT_PUBLIC_TOKEN_SYMBOL ?? "PUNC",
     name: process.env.NEXT_PUBLIC_TOKEN_NAME ?? "Purple Unc",
-    mint: process.env.NEXT_PUBLIC_MINT_ADDRESS ?? "PASTE_PUMPFUN_MINT_HERE",
+    // CA is hardcoded as the default so the site goes live without needing
+    // an env var on every environment. NEXT_PUBLIC_MINT_ADDRESS still wins
+    // when set (useful for previews against a test mint).
+    mint:
+      process.env.NEXT_PUBLIC_MINT_ADDRESS ??
+      "BCKJnDzpqT7YwTFDqJypxuCksgB1dTGvq12iyTNBpump",
   },
   socials: {
     twitter: process.env.NEXT_PUBLIC_TWITTER_URL ?? "",

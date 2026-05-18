@@ -11,6 +11,7 @@
 
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { config } from "@/lib/config";
 
 type Sender =
   | { who: "unc" }
@@ -68,7 +69,7 @@ const MESSAGES: Message[] = [
     time: "TODAY · 2:31 AM",
     text: (
       <span className="font-mono text-[11px] break-all">
-        PASTE_PUMPFUN_MINT_HERE
+        {config.token.mint}
       </span>
     ),
   },
