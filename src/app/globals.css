@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --font-display and --font-body are injected on <html> by next/font (see layout.tsx). */
+
+html, body {
+  background: #0B0414;
+  color: #EADBFF;
+  overflow-x: hidden;
+}
+
+/* === CRT screen effects === */
+.crt-scanlines::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.18) 3px,
+    rgba(0, 0, 0, 0) 4px
+  );
+  z-index: 9999;
+  mix-blend-mode: multiply;
+}
+
+.crt-curvature {
+  position: relative;
+}
+.crt-curvature::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 9998;
+}
+
+/* RGB color bleed — subtle chromatic aberration on text */
+.crt-text {
+  text-shadow:
+    0.6px 0 0 rgba(255, 0, 80, 0.55),
+    -0.6px 0 0 rgba(0, 200, 255, 0.45),
+    0 0 8px rgba(124, 58, 237, 0.35);
+}
+
+/* "ON AIR" pulsing dot */
+@keyframes on-air-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 10px rgba(255, 60, 100, 0.9); }
+  50%      { opacity: 0.5; box-shadow: 0 0 4px rgba(255, 60, 100, 0.4); }
+}
+.on-air-dot {
+  animation: on-air-pulse 1.2s ease-in-out infinite;
+}
+
+/* Static / snow effect for channel transitions */
+@keyframes tv-static {
+  0%   { background-position: 0 0; }
+  20%  { background-position: 100% 50%; }
+  40%  { background-position: 50% 100%; }
+  60%  { background-position: 0 50%; }
+  80%  { background-position: 75% 25%; }
+  100% { background-position: 0 0; }
+}
+.tv-static {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 2px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 2px),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 240px 240px, 240px 240px, 240px 240px;
+  animation: tv-static 0.22s steps(6) infinite;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+/* Subtle rolling-band scan that drifts down the screen */
+@keyframes scan-band {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+.scan-band {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.04) 50%,
+    transparent
+  );
+  pointer-events: none;
+  z-index: 50;
+  animation: scan-band 9s linear infinite;
+}
+
+/* Marquee for lower-third ticker */
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Flicker for "WE'LL BE RIGHT BACK" cards */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92%      { opacity: 1; }
+  93%      { opacity: 0.3; }
+  94%      { opacity: 1; }
+  96%      { opacity: 0.6; }
+  97%      { opacity: 1; }
+}
+.flicker { animation: flicker 4s infinite; }
+
+/* Glow utility for purple buttons */
+.btn-glow {
+  box-shadow:
+    0 0 24px rgba(124, 58, 237, 0.55),
+    inset 0 0 18px rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+.btn-glow:hover {
+  box-shadow:
+    0 0 38px rgba(124, 58, 237, 0.9),
+    inset 0 0 28px rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.font-display { font-family: var(--font-display); }
+
+/* Hide scrollbars inside the TV viewport but allow scroll */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Commercial-break overlay: fade in, hold, fade out across 1.5s */
+@keyframes commercial-fade {
+  0%   { opacity: 0; transform: scale(0.97); }
+  10%  { opacity: 1; transform: scale(1); }
+  85%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1); }
+}
+.commercial-fade { animation: commercial-fade 1.5s ease-in-out both; }
+
+/* "Channel coming in" tuning effect */
+@keyframes tune-in {
+  0%   { filter: blur(8px) brightness(0.3); transform: scale(0.97); opacity: 0; }
+  40%  { filter: blur(2px) brightness(0.8); opacity: 0.7; }
+  100% { filter: blur(0) brightness(1); transform: scale(1); opacity: 1; }
+}
+.tune-in { animation: tune-in 0.55s ease-out both; }
