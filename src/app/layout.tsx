@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "$PUNC — The Purple Channel · Broadcasting from the couch",
   description:
     "$PUNC (Purple Unc) — a Solana memecoin broadcast live from your degenerate uncle's basement. Channel up. Cope down.",
-  metadataBase: new URL("https://purpleunc.lol"),
+  metadataBase: new URL("https://punc.live"),
   openGraph: {
     title: "$PUNC — The Purple Channel",
     description: "Tune in. Cope out. Live on Solana.",

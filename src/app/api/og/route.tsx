@@ -214,7 +214,7 @@ export async function GET(req: Request) {
           >
             <span>TUNE IN</span>
             <span style={{ color: "#F5F0FF", fontSize: "28px" }}>
-              purpleunc.lol
+              punc.live
             </span>
           </div>
         </div>
